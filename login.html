@@ -1,0 +1,28 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>List Login</title>
+	<script type='text/javascript'>
+		function addUser(){
+			var b = new XMLHttpRequest();
+			b.onreadystatechange = function() {
+				document.getElementById("I").innerHTML = "User Created";
+			};
+			b.open("GET","add_user.php?username=" + document.getElementById("u").value + "?password=" + document.getElementById("p").value ,true);
+			b.send();
+		}
+	</script>
+</head>
+<body>
+	<form action="list.php" method="post">
+		Username:<br>
+		<input type="text" name="username" id="u"><br>
+		Password:<br>
+		<input type="text" name="password" id="p"><br><br>
+		<input type="submit" value="Submit">
+		<input type="button" value="Signup" onclick="addUser()"></input>
+	</form> 
+	<div id="I"></div>
+</body>
+</html> 
