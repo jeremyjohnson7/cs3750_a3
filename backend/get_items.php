@@ -17,14 +17,14 @@
             $stmt->execute();
             $stmt->bind_result($item_id, $item_desc);
             
-            /*while($stmt->fetch())
-                echo "$item_desc\n";*/
-            
-            while($stmt->fetch())
+            while ($stmt->fetch())
                 $data[$item_id] = $item_desc;
             
+            foreach ($data as $id => $desc)
+                echo "<div id='$id'>$desc <button onclick='deleteItem($id)'>Delete</button></div>\n";
+            
             //print_r($data);
-            echo json_encode($data);
+            //echo json_encode($data);
         }
         $stmt->close();
         

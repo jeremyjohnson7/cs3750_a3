@@ -9,7 +9,7 @@
 			b.onreadystatechange = function() {
 				document.getElementById("I").innerHTML = "User Created";
 			};
-			b.open("GET","add_user.php?username=" + document.getElementById("u").value + "?password=" + document.getElementById("p").value ,true);
+			b.open("GET","login.php?username=" + document.getElementById("u").value + "&pwd_hash=" + document.getElementById("p").value ,true);
 			b.send();
 		}
 	</script>
