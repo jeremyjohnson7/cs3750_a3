@@ -1,4 +1,6 @@
 <?php
+    //http://icarus.cs.weber.edu/~jj42670/a3/add_user.php?username=abcde&password=kasdfgijoadflkgj
+    
     if (!(isset($_GET['username']) && isset($_GET['password'])))
         die("Username or password not provided");
     
