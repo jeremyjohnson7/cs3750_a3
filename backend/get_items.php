@@ -28,9 +28,10 @@
     
     header("Access-Control-Allow-Origin: *");
     
-    foreach ($data as $id => $desc)
-        echo "<div id='$id'>$desc <button onclick='deleteItem($id)'>Delete</button></div>\n";
+    /*foreach ($data as $id => $desc)
+        echo "<div id='$id'>$desc <button onclick='deleteItem($id)'>Delete</button></div>\n";*/
     
     //print_r($data);
     //echo json_encode($data);
+    echo join("\n", $data);
 ?>

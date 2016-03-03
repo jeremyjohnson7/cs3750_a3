@@ -1,9 +1,9 @@
 <?php
-    if (!(isset($_GET['username']) && isset($_GET['item_id'])))
+    if (!(isset($_GET['username']) && isset($_GET['item_desc'])))
         die("Username or item not provided");
     
     $username = $_GET['username'];
-    $item_id = $_GET['item_id'];
+    $item_desc = $_GET['item_desc'];
     
     //Database connection
     include_once "db_info.php";
@@ -13,8 +13,8 @@
         die('Connect Error (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
     } else {
         $stmt = $mysqli->stmt_init();
-        if ($stmt->prepare("DELETE FROM items WHERE user_id = (SELECT user_id FROM users WHERE username = ?) AND item_id = ?;")) {
-            $stmt->bind_param("ss", $username, $item_id);
+        if ($stmt->prepare("DELETE FROM items WHERE user_id = (SELECT user_id FROM users WHERE username = ?) AND item_desc = ?;")) {
+            $stmt->bind_param("ss", $username, $item_desc);
             $stmt->execute();
             $affected_rows = $mysqli->affected_rows;
         }

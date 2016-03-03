@@ -11,6 +11,9 @@ CREATE TABLE items(
    CONSTRAINT FK_items_user_id FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
+ALTER TABLE items
+ADD CONSTRAINT AK_items_user_id_item_desc UNIQUE KEY (user_id, item_desc);
+
 INSERT INTO users(username, password)
 VALUES('jason', '55069226363d1819a92da0a06bab02a4a6050440b71bc54dbdae6c789cc3c2f8');
 
