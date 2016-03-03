@@ -20,14 +20,14 @@
             $stmt->execute();
             $stmt->bind_result($count);
             
-            while($stmt->fetch())
-                $data[] = $count;
-            
-            echo $count;
+            while ($stmt->fetch());
         }
         $stmt->close();
         
         //Terminate db connection
         $mysqli->close();
     }
+    
+    header("Access-Control-Allow-Origin: *");
+    echo $count;
 ?>

@@ -20,9 +20,6 @@
             while ($stmt->fetch())
                 $data[$item_id] = $item_desc;
             
-            foreach ($data as $id => $desc)
-                echo "<div id='$id'>$desc <button onclick='deleteItem($id)'>Delete</button></div>\n";
-            
             //print_r($data);
             //echo json_encode($data);
         }
@@ -31,4 +28,9 @@
         //Terminate db connection
         $mysqli->close();
     }
+    
+    header("Access-Control-Allow-Origin: *");
+    
+    foreach ($data as $id => $desc)
+        echo "<div id='$id'>$desc <button onclick='deleteItem($id)'>Delete</button></div>\n";
 ?>

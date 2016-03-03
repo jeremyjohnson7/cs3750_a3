@@ -16,11 +16,14 @@
         if ($stmt->prepare("DELETE FROM items WHERE user_id = (SELECT user_id FROM users WHERE username = ?) AND item_id = ?;")) {
             $stmt->bind_param("ss", $username, $item_id);
             $stmt->execute();
-            echo $mysqli->affected_rows;
+            $affected_rows = $mysqli->affected_rows;
         }
         $stmt->close();
         
         //Terminate db connection
         $mysqli->close();
     }
+    
+    header("Access-Control-Allow-Origin: *");
+    echo $affected_rows;
 ?>

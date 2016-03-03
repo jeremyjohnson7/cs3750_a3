@@ -16,11 +16,14 @@
         if ($stmt->prepare("INSERT INTO items(user_id, item_desc) VALUES ((SELECT user_id FROM users WHERE username = ?), ?);")) {
             $stmt->bind_param("ss", $username, $item_description);
             $stmt->execute();
-            echo $mysqli->affected_rows;
+            $affected_rows = $mysqli->affected_rows;
         }
         $stmt->close();
         
         //Terminate db connection
         $mysqli->close();
     }
+    
+    header("Access-Control-Allow-Origin: *");
+    echo $affected_rows;
 ?>

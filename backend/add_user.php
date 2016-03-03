@@ -19,11 +19,14 @@
         if ($stmt->prepare("INSERT INTO users(username, password) VALUES (?, ?);")) {
             $stmt->bind_param("ss", $username, $pwd_hash);
             $stmt->execute();
-            echo $mysqli->affected_rows;
+            $affected_rows = $mysqli->affected_rows;
         }
         $stmt->close();
         
         //Terminate db connection
         $mysqli->close();
     }
+    
+    header("Access-Control-Allow-Origin: *");
+    echo $affected_rows;
 ?>
