@@ -16,34 +16,81 @@
                     //document.getElementById("output").innerHTML = b.responseText;
                     document.getElementById("output").innerHTML = "Operation Failed";
 			};
-			b.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/add_user.php?username=" + document.getElementById("u").value + "&password=" + document.getElementById("p").value ,true);
+			//b.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/add_user.php?username=" + document.getElementById("u").value + "&password=" + document.getElementById("p").value ,true);
+			b.open("GET","add_user.php?username=" + document.getElementById("u").value + "&password=" + document.getElementById("p").value ,true);
 			b.send();
 		}
         
 		function login(){
+
 			var b = new XMLHttpRequest();
 			b.onreadystatechange = function() {
-				//document.getElementById("I").innerHTML = "User Created";
-                
-                if (b.responseText == "1")
-                    document.getElementById("output").innerHTML = "Login Succeeded";
-                else
-                    document.getElementById("output").innerHTML = "Login Failed";
+                if (b.responseText == "rmy"){
+					document.getElementById("loginf").innerHTML = b.responseText;
+					var a = new XMLHttpRequest();
+					a.onreadystatechange = function() {
+						document.getElementById("output").innerHTML = a.responseText;
+						document.getElementById("addb").innerHTML = "<br><br>Item to add: <input type=\"text\" name=\"item\" id=\"item\"><br><button type=\"button\" onclick=\"addItem()\">Add</button>";
+						document.getElementById("removeb").innerHTML = "<br><br>Item to remove: <input type=\"text\" name=\"ritem\" id=\"ritem\"><br><button type=\"button\" onclick=\"removeItem()\">Remove</button>";
+					};
+					//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=<?echo $_POST['username']?>",true);
+					//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=jeremy",true);
+					a.open("GET","get_items.php?username=" + b.responseText,true);
+					a.send();
+					
+                } else {
+                    document.getElementById("output").innerHTML = b.responseText;
+				}
 			};
-			b.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/login.php?username=" + document.getElementById("u").value + "&pwd_hash=" + document.getElementById("p").value ,true);
+			//b.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/login.php?username=" + document.getElementById("u").value + "&pwd_hash=" + document.getElementById("p").value ,true);
+			b.open("GET","login.php?username=" + document.getElementById("u").value + "&pwd_hash=" + document.getElementById("p").value ,true);
+			b.send();
+		}
+		
+		function addItem(){
+			var b = new XMLHttpRequest();
+			b.onreadystatechange = function() {
+				var a = new XMLHttpRequest();
+				a.onreadystatechange = function() {
+					document.getElementById("output").innerHTML = a.responseText;
+				};
+				//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=<?echo $_POST['username']?>",true);
+				//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=jeremy",true);
+				a.open("GET","get_items.php?username=" + document.getElementById("loginf").innerHTML, true);
+				a.send();
+			};
+			b.open("GET","add_item.php?username=" + document.getElementById("loginf").innerHTML + "&item_desc=" + document.getElementById("item").value ,true);
+			b.send();
+		}
+		
+		function removeItem(){
+			var b = new XMLHttpRequest();
+			b.onreadystatechange = function() {
+				var a = new XMLHttpRequest();
+				a.onreadystatechange = function() {
+					document.getElementById("output").innerHTML = a.responseText;
+				};
+				//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=<?echo $_POST['username']?>",true);
+				//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=jeremy",true);
+				a.open("GET","get_items.php?username=" + document.getElementById("loginf").innerHTML, true);
+				a.send();
+			};
+			b.open("GET","delete_item.php?username=" + document.getElementById("loginf").innerHTML + "&item_desc=" + document.getElementById("ritem").value ,true);
 			b.send();
 		}
 	</script>
 </head>
 <body>
-	<form action="list.php" method="post">
+<div id="loginf">
 		Username:<br>
 		<input type="text" name="username" id="u"><br>
 		Password:<br>
 		<input type="text" name="password" id="p"><br><br>
-		<input type="submit" value="Submit" onclick="login()"></input>
+		<input type="button" value="Submit" onclick="login()"></input>
 		<input type="button" value="Signup" onclick="addUser()"></input>
-	</form> 
+</div>
 	<div id="output"></div>
+	<div id="addb"></div>
+	<div id="removeb"></div>
 </body>
 </html> 
