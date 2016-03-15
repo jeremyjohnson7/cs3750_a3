@@ -24,5 +24,8 @@ SELECT *
 FROM users u
 JOIN items i ON u.user_id = i.user_id;
 
+/*ALTER TABLE users
+ADD CONSTRAINT CK_users_username_not_blank CHECK (LENGTH(TRIM(username)) > 0);
 
-
+ALTER TABLE items
+ADD CONSTRAINT CK_items_item_desc_not_blank CHECK (LENGTH(TRIM(item_desc)) > 0);*/
