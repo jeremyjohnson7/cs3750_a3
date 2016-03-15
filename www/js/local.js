@@ -41,13 +41,7 @@ function isConnected() {
     // add/delete   /  (edit maybe)
     // posible to store user name?
 
-// parse through string with newline separator
-    // returns array
-function splitDBList(value)
-{
-    split = value.split("\n");
-    return split;                
-}
+
 
 // Parses through list, calls store to store value
     // key value of stored items are itemN

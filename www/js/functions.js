@@ -1,3 +1,11 @@
+// parse through string with newline separator
+    // returns array
+function splitDBList(value)
+{
+    split = value.split("\n");
+    return split;                
+}
+
 function login(){
 			var b = new XMLHttpRequest();
 			b.onreadystatechange = function() {
