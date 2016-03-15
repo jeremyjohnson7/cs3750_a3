@@ -24,3 +24,5 @@ SELECT *
 FROM users u
 JOIN items i ON u.user_id = i.user_id;
 
+
+
