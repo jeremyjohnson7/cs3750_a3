@@ -29,5 +29,5 @@
     }
     
     header("Access-Control-Allow-Origin: *");
-    echo $count;
+    echo $count == 1 ? $username : 0;
 ?>
