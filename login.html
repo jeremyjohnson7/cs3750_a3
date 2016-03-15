@@ -17,7 +17,7 @@
                     document.getElementById("output").innerHTML = "Operation Failed";
 			};
 			//b.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/add_user.php?username=" + document.getElementById("u").value + "&password=" + document.getElementById("p").value ,true);
-			b.open("GET","add_user.php?username=" + document.getElementById("u").value + "&password=" + document.getElementById("p").value ,true);
+			b.open("GET","http://icarus.cs.weber.edu/~rm08786/l/add_user.php?username=" + document.getElementById("u").value + "&password=" + document.getElementById("p").value ,true);
 			b.send();
 		}
         
@@ -35,7 +35,7 @@
 					};
 					//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=<?echo $_POST['username']?>",true);
 					//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=jeremy",true);
-					a.open("GET","get_items.php?username=" + b.responseText,true);
+					a.open("GET","http://icarus.cs.weber.edu/~rm08786/l/get_items.php?username=" + b.responseText,true);
 					a.send();
 					
                 } else {
@@ -43,7 +43,7 @@
 				}
 			};
 			//b.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/login.php?username=" + document.getElementById("u").value + "&pwd_hash=" + document.getElementById("p").value ,true);
-			b.open("GET","login.php?username=" + document.getElementById("u").value + "&pwd_hash=" + document.getElementById("p").value ,true);
+			b.open("GET","http://icarus.cs.weber.edu/~rm08786/l/login.php?username=" + document.getElementById("u").value + "&pwd_hash=" + document.getElementById("p").value ,true);
 			b.send();
 		}
 		
@@ -56,10 +56,10 @@
 				};
 				//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=<?echo $_POST['username']?>",true);
 				//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=jeremy",true);
-				a.open("GET","get_items.php?username=" + document.getElementById("loginf").innerHTML, true);
+				a.open("GET","http://icarus.cs.weber.edu/~rm08786/l/get_items.php?username=" + document.getElementById("loginf").innerHTML, true);
 				a.send();
 			};
-			b.open("GET","add_item.php?username=" + document.getElementById("loginf").innerHTML + "&item_desc=" + document.getElementById("item").value ,true);
+			b.open("GET","http://icarus.cs.weber.edu/~rm08786/l/add_item.php?username=" + document.getElementById("loginf").innerHTML + "&item_desc=" + document.getElementById("item").value ,true);
 			b.send();
 		}
 		
@@ -72,10 +72,10 @@
 				};
 				//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=<?echo $_POST['username']?>",true);
 				//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=jeremy",true);
-				a.open("GET","get_items.php?username=" + document.getElementById("loginf").innerHTML, true);
+				a.open("GET","http://icarus.cs.weber.edu/~rm08786/l/get_items.php?username=" + document.getElementById("loginf").innerHTML, true);
 				a.send();
 			};
-			b.open("GET","delete_item.php?username=" + document.getElementById("loginf").innerHTML + "&item_desc=" + document.getElementById("ritem").value ,true);
+			b.open("GET","http://icarus.cs.weber.edu/~rm08786/l/delete_item.php?username=" + document.getElementById("loginf").innerHTML + "&item_desc=" + document.getElementById("ritem").value ,true);
 			b.send();
 		}
 	</script>
