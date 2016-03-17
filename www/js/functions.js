@@ -3,6 +3,7 @@
 function splitDBList(value)
 {
     split = value.split("\n");
+    alert(split.length);
     return split;                
 }
 
@@ -10,6 +11,7 @@ function splitDBList(value)
 function placeList(list)
 {
     document.getElementById("output").innerHTML = "";   
+    //alert(list.length);
     for(var i = 0; i < list.length; i++)
     {
         document.getElementById("output").innerHTML +=  "<li id=" + i + ">" + list[i] + "</li>";
@@ -28,10 +30,10 @@ function addItem(){
         };
         //a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=<?echo $_POST['username']?>",true);
         //a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=jeremy",true);
-        a.open("GET","http://icarus.cs.weber.edu/~rm08786/l/get_items.php?username=" + document.getElementById("loginf").innerHTML, true);
+        a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=" + document.getElementById("loginf").innerHTML, true);
         a.send();
     };
-    b.open("GET","http://icarus.cs.weber.edu/~rm08786/l/add_item.php?username=" + document.getElementById("loginf").innerHTML + "&item_desc=" + document.getElementById("item").value ,true);
+    b.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/add_item.php?username=" + document.getElementById("loginf").innerHTML + "&item_desc=" + document.getElementById("item").value ,true);
     b.send();
 }
 		
@@ -48,10 +50,10 @@ function removeItem(){
         };
         //a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=<?echo $_POST['username']?>",true);
         //a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=jeremy",true);
-        a.open("GET","http://icarus.cs.weber.edu/~rm08786/l/get_items.php?username=" + document.getElementById("loginf").innerHTML, true);
+        a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=" + document.getElementById("loginf").innerHTML, true);
         a.send();
     };
-    b.open("GET","http://icarus.cs.weber.edu/~rm08786/l/delete_item.php?username=" + document.getElementById("loginf").innerHTML + "&item_desc=" + document.getElementById("ritem").value ,true);
+    b.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/delete_item.php?username=" + document.getElementById("loginf").innerHTML + "&item_desc=" + document.getElementById("ritem").value ,true);
     b.send();
 }
 
