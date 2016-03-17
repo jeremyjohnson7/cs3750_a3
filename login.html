@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -7,27 +7,13 @@
     <script type="text/javascript" src="www/js/functions.js"></script>
 	<script type='text/javascript'>
 
-    function addUser(){
-        var b = new XMLHttpRequest();
-        b.onreadystatechange = function() {
-            //document.getElementById("I").innerHTML = "User Created";
-
-            if (b.responseText == "1")
-                //document.getElementById("output").innerHTML = b.responseText;
-                document.getElementById("output").innerHTML = "User Created";
-            else
-                //document.getElementById("output").innerHTML = b.responseText;
-                document.getElementById("output").innerHTML = "Operation Failed";
-        };
-        //b.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/add_user.php?username=" + document.getElementById("u").value + "&password=" + document.getElementById("p").value ,true);
-        b.open("GET","http://icarus.cs.weber.edu/~rm08786/l/add_user.php?username=" + document.getElementById("u").value + "&password=" + document.getElementById("p").value ,true);
-        b.send();
-    }
+    
         
     function login(){
         var b = new XMLHttpRequest();
         //alert("login");
         b.onreadystatechange = function() {
+            
             if (b.responseText != "1"){
                 document.getElementById("loginf").innerHTML = b.responseText;
                 //document.getElementById("loginf").innerHTML = document.getElementById("u").innerHTML;
@@ -35,15 +21,7 @@
                 var a = new XMLHttpRequest();
                 a.onreadystatechange = function() {
                     var outputList = splitDBList(a.responseText);
-                    //alert(outputList);
-                    //document.getElementById("output").innerHTML = outputList[4];
-
-                    document.getElementById("output").innerHTML = "";
-                    for(var i = 0; i < outputList.length; i++)
-                    {
-                        document.getElementById("output").innerHTML += "<li id=" + i + ">" + outputList[i] + "</li>";
-                    }
-
+                    placeList(outputList);
 
                     document.getElementById("addb").innerHTML = "<br><br>Item to add: <input type=\"text\" name=\"item\" id=\"item\"><br><button type=\"button\" onclick=\"addItem()\">Add</button>";
                     document.getElementById("removeb").innerHTML = "<br><br>Item to remove: <input type=\"text\" name=\"ritem\" id=\"ritem\"><br><button type=\"button\" onclick=\"removeItem()\">Remove</button>";
@@ -61,9 +39,6 @@
         //b.open("GET","http://icarus.cs.weber.edu/~rm08786/l/login.php?username=" + document.getElementById("u").value + "&pwd_hash=" + //document.getElementById("p").value ,true);
         b.send();
     }
-        
-
-		
 	</script>
 </head>
 <body>
