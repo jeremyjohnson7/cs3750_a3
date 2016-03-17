@@ -18,9 +18,28 @@ function placeList(list)
     }
 }
 
+
+function isEmpty(stringItem)
+{
+    var trimmed = stringItem.trim();
+    if(trimmed.length == 0)
+        return false;
+    else
+        return true;
+}
+
+
 // adds item into database
     // re-displays by calling placeList
 function addItem(){
+    //check if not empty string
+    var stringItem = document.getElementById("item").innerHTML;
+    if(isEmpty(stringItem))
+    {
+        alert("No empty strings");
+        return;
+    }
+    
     var b = new XMLHttpRequest();
     b.onreadystatechange = function() {
         var a = new XMLHttpRequest();
@@ -58,7 +77,7 @@ function removeItem(){
 }
 
 
-initialDisplay(bResponse)
+function initialDisplay(bResponse)
 {
     var a = new XMLHttpRequest();
                 a.onreadystatechange = function() {
