@@ -8,7 +8,7 @@
     $password = $_GET['password'];
     $pwd_hash = hash("sha256", $username . $password);
     
-    if (!preg_match('#^\w+$#', $username))
+    if (!preg_match('#^[a-z][a-z0-9]*$#', "$username"))
         die("0");
     
     //Database connection
