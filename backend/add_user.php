@@ -4,9 +4,12 @@
     if (!(isset($_GET['username']) && isset($_GET['password'])))
         die("Username or password not provided");
     
-    $username = $_GET['username'];
+    $username = strtolower($_GET['username']);
     $password = $_GET['password'];
     $pwd_hash = hash("sha256", $username . $password);
+    
+    if (!preg_match('#^\w+$#', $username))
+        die("0");
     
     //Database connection
     include_once "db_info.php";

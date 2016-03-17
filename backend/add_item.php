@@ -3,7 +3,10 @@
         die("Username or item not provided");
     
     $username = $_GET['username'];
-    $item_desc = $_GET['item_desc'];
+    $item_desc = trim($_GET['item_desc']);
+    
+    if (strlen($item_desc) == 0)
+        die("0");
     
     //Database connection
     include_once "db_info.php";

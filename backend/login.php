@@ -4,7 +4,7 @@
     if (!(isset($_GET['username']) && isset($_GET['pwd_hash'])))
         die("Username or password hash not provided");
     
-    $username = $_GET['username'];
+    $username = strtolower($_GET['username']);
     $pwd_hash = $_GET['pwd_hash'];
     
     //Database connection
@@ -30,4 +30,5 @@
     
     header("Access-Control-Allow-Origin: *");
     echo $count == 1 ? $username : 0;
+    //echo $count;
 ?>
