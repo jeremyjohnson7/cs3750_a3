@@ -5,8 +5,6 @@ function splitDBList(value)
     split = value.split("\n");
     return split;                
 }
-
-
 		
 		function addItem(){
 			var b = new XMLHttpRequest();

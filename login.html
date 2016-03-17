@@ -6,6 +6,11 @@
     
     <script type="text/javascript" src="js/functions.js"></script>
 	<script type='text/javascript'>
+function splitDBList(value)
+{
+    split = value.split("\n");
+    return split;                
+}
         function addUser(){
 			var b = new XMLHttpRequest();
 			b.onreadystatechange = function() {
@@ -25,7 +30,7 @@
         
         function login(){
 			var b = new XMLHttpRequest();
-            alert("login");
+            //alert("login");
 			b.onreadystatechange = function() {
                 if (b.responseText != "1"){
 					document.getElementById("loginf").innerHTML = b.responseText;
@@ -33,7 +38,17 @@
                     
 					var a = new XMLHttpRequest();
 					a.onreadystatechange = function() {
-						document.getElementById("output").innerHTML = a.responseText;
+                        var outputList = splitDBList(a.responseText);
+                        //alert(outputList);
+						//document.getElementById("output").innerHTML = outputList[4];
+                        
+                        document.getElementById("output").innerHTML = "";
+                        for(var i = 0; i < outputList.length; i++)
+                        {
+                            document.getElementById("output").innerHTML += "<li id=" + i + ">" + outputList[i] + "</li>";
+                        }
+                        
+                        
 						document.getElementById("addb").innerHTML = "<br><br>Item to add: <input type=\"text\" name=\"item\" id=\"item\"><br><button type=\"button\" onclick=\"addItem()\">Add</button>";
 						document.getElementById("removeb").innerHTML = "<br><br>Item to remove: <input type=\"text\" name=\"ritem\" id=\"ritem\"><br><button type=\"button\" onclick=\"removeItem()\">Remove</button>";
 					};
@@ -51,6 +66,7 @@
 			b.send();
 		}
         
+
 		
 	</script>
 </head>
