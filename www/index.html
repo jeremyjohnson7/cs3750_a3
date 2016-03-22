@@ -35,7 +35,7 @@
 			var b = new XMLHttpRequest();
 			b.onreadystatechange = function() {
                 if (b.responseText != 0){
-					document.getElementById("loginf").innerHTML = b.responseText;
+					document.getElementById("loginf").innerHTML = "<h1>" + b.responseText + "'s List</h1>";
 					var a = new XMLHttpRequest();
 					a.onreadystatechange = function() {
 						//document.getElementById("output").innerHTML = a.responseText;

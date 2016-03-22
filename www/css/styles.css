@@ -3,7 +3,39 @@
   src: url("../font/OldStandard-Regular.ttf") format("truetype");
 }
 
-body {
+@font-face {
+  font-family: "OldStandardTT";
+  font-style: italic;
+  src: url("../font/OldStandard-Italic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "OldStandardTT";
+  font-weight: bold;
+  src: url("../font/OldStandard-Bold.ttf") format("truetype");
+}
+
+body, input, button {
     font-family: "OldStandardTT" !important;
-    /*font-size: 125%;*/
+    font-size: 20px;
+}
+
+html {
+    overflow-y: scroll;
+    background: #f8f8f8;
+    margin: 8px;
+}
+
+body {
+    max-width: 480px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+h1 {
+    font-size: 28px;
 }
