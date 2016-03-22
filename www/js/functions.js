@@ -3,29 +3,26 @@
 function splitDBList(value)
 {
     split = value.split("\n");
-    alert(split.length);
     return split;                
 }
 
 // places an array into div with id = output
 function placeList(list)
 {
-    document.getElementById("output").innerHTML = "";   
-    //alert(list.length);
+    document.getElementById("output").innerHTML = ""; 
     for(var i = 0; i < list.length; i++)
     {
         document.getElementById("output").innerHTML +=  "<li id=" + i + ">" + list[i] + "</li>";
     }
 }
 
-
 function isEmpty(stringItem)
 {
     var trimmed = stringItem.trim();
     if(trimmed.length == 0)
-        return false;
-    else
         return true;
+    else
+        return false;
 }
 
 
@@ -34,11 +31,11 @@ function isEmpty(stringItem)
 function addItem(){
     //check if not empty string
     var stringItem = document.getElementById("item").innerHTML;
-    if(isEmpty(stringItem))
-    {
-        alert("No empty strings");
-        return;
-    }
+    
+//    if(isEmpty(stringItem))
+//    {
+//        return;
+//    }
     
     var b = new XMLHttpRequest();
     b.onreadystatechange = function() {

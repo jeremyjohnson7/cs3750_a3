@@ -11,7 +11,7 @@
         
     function login(){
         var b = new XMLHttpRequest();
-        //alert("login");
+        
         b.onreadystatechange = function() {            
             if (b.responseText != 0){
                 document.getElementById("loginf").innerHTML = b.responseText;
