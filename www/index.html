@@ -5,11 +5,12 @@
     <meta name=viewport content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="www/css/styles.css">
 	<title>List Login</title>    
-    <script type="text/javascript" src="www/js/functions.js"></script>
-    <script type='text/javascript' src='www/js/sha256.js'></script>
+    <script type="text/javascript" src="js/functions.js"></script>
+    <script type='text/javascript' src='js/sha256.js'></script>
 	<script type='text/javascript'>
         function hashPass(){
-            return sha256_digest(document.getElementById("u").value + document.getElementById("p").value);
+            var lowerUser = document.getElementById("u").value;
+            return sha256_digest(lowerUser.toLowerCase() + document.getElementById("p").value);
         }
         
 		function addUser(){
