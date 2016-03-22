@@ -5,8 +5,9 @@
         die("Username or password not provided");
     
     $username = strtolower($_GET['username']);
-    $password = $_GET['password'];
-    $pwd_hash = hash("sha256", $username . $password);
+    //$password = $_GET['password'];
+    //$pwd_hash = hash("sha256", $username . $password);
+    $pwd_hash = $_GET['password'];
     
     if (!preg_match('#^[a-z][a-z0-9]*$#', "$username"))
         die("0");

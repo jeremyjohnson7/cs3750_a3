@@ -1,63 +1,97 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
-
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        
-        
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-                <div id="result">Local Storage</div>
+<head>
+	<meta charset="UTF-8">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+	<title>List Login</title>
+	<script type='text/javascript'>
+		function addUser(){
+			var b = new XMLHttpRequest();
+			b.onreadystatechange = function() {
+				//document.getElementById("I").innerHTML = "User Created";
                 
-            </div>
-        </div>
+                if (b.responseText == "1")
+                    //document.getElementById("output").innerHTML = b.responseText;
+                    document.getElementById("output").innerHTML = "User Created";
+                else
+                    //document.getElementById("output").innerHTML = b.responseText;
+                    document.getElementById("output").innerHTML = "Operation Failed";
+			};
+			//b.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/add_user.php?username=" + document.getElementById("u").value + "&password=" + document.getElementById("p").value ,true);
+			b.open("GET","http://icarus.cs.weber.edu/~rm08786/l/add_user.php?username=" + document.getElementById("u").value + "&password=" + document.getElementById("p").value ,true);
+			b.send();
+		}
         
-        
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        
-        <script type="text/javascript">
-            app.initialize();
-            // Check browser support
-            if (typeof(Storage) !== "undefined") {
-            // Store
-                localStorage.setItem("key", "VALUE");
-            // Retrieve
-                document.getElementById("result").innerHTML = localStorage.getItem("key");
-            } else {
-                document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
-            }
-        </script>        
-        
-    </body>
-</html>
+		function login(){
+			var b = new XMLHttpRequest();
+			b.onreadystatechange = function() {
+                if (b.responseText == document.getElementById("u").value){
+					document.getElementById("loginf").innerHTML = b.responseText;
+					var a = new XMLHttpRequest();
+					a.onreadystatechange = function() {
+						document.getElementById("output").innerHTML = a.responseText;
+						document.getElementById("addb").innerHTML = "<br><br>Item to add: <input type=\"text\" name=\"item\" id=\"item\"><br><button type=\"button\" onclick=\"addItem()\">Add</button>";
+						document.getElementById("removeb").innerHTML = "<br><br>Item to remove: <input type=\"text\" name=\"ritem\" id=\"ritem\"><br><button type=\"button\" onclick=\"removeItem()\">Remove</button>";
+					};
+					//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=<?echo $_POST['username']?>",true);
+					//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=jeremy",true);
+					a.open("GET","http://icarus.cs.weber.edu/~rm08786/l/get_items.php?username=" + b.responseText,true);
+					a.send();
+					
+                } else {
+                    document.getElementById("output").innerHTML = b.responseText;
+				}
+			};
+			//b.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/login.php?username=" + document.getElementById("u").value + "&pwd_hash=" + document.getElementById("p").value ,true);
+			b.open("GET","http://icarus.cs.weber.edu/~rm08786/l/login.php?username=" + document.getElementById("u").value + "&pwd_hash=" + document.getElementById("p").value ,true);
+			b.send();
+		}
+		
+		function addItem(){
+			var b = new XMLHttpRequest();
+			b.onreadystatechange = function() {
+				var a = new XMLHttpRequest();
+				a.onreadystatechange = function() {
+					document.getElementById("output").innerHTML = a.responseText;
+				};
+				//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=<?echo $_POST['username']?>",true);
+				//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=jeremy",true);
+				a.open("GET","http://icarus.cs.weber.edu/~rm08786/l/get_items.php?username=" + document.getElementById("loginf").innerHTML, true);
+				a.send();
+			};
+			b.open("GET","http://icarus.cs.weber.edu/~rm08786/l/add_item.php?username=" + document.getElementById("loginf").innerHTML + "&item_desc=" + document.getElementById("item").value ,true);
+			b.send();
+		}
+		
+		function removeItem(){
+			var b = new XMLHttpRequest();
+			b.onreadystatechange = function() {
+				var a = new XMLHttpRequest();
+				a.onreadystatechange = function() {
+					document.getElementById("output").innerHTML = a.responseText;
+				};
+				//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=<?echo $_POST['username']?>",true);
+				//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=jeremy",true);
+				a.open("GET","http://icarus.cs.weber.edu/~rm08786/l/get_items.php?username=" + document.getElementById("loginf").innerHTML, true);
+				a.send();
+			};
+			b.open("GET","http://icarus.cs.weber.edu/~rm08786/l/delete_item.php?username=" + document.getElementById("loginf").innerHTML + "&item_desc=" + document.getElementById("ritem").value ,true);
+			b.send();
+		}
+	</script>
+</head>
+<body>
+<div id="loginf">
+		Username:<br>
+		<input type="text" name="username" id="u"><br>
+		Password:<br>
+		<input type="text" name="password" id="p"><br><br>
+		<input type="button" value="Submit" onclick="login()"></input>
+		<input type="button" value="Signup" onclick="addUser()"></input>
+</div>
+	<div id="output"></div>
+	<div id="addb"></div>
+	<div id="removeb"></div>
+</body>
+</html> 
