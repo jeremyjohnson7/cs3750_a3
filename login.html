@@ -4,7 +4,8 @@
 	<meta charset="UTF-8">
     <meta name=viewport content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="www/css/styles.css">
-	<title>List Login</title>
+	<title>List Login</title>    
+    <script type="text/javascript" src="www/js/functions.js"></script>
     <script type='text/javascript' src='www/js/sha256.js'></script>
 	<script type='text/javascript'>
         function hashPass(){
@@ -36,7 +37,11 @@
 					document.getElementById("loginf").innerHTML = b.responseText;
 					var a = new XMLHttpRequest();
 					a.onreadystatechange = function() {
-						document.getElementById("output").innerHTML = a.responseText;
+						//document.getElementById("output").innerHTML = a.responseText;
+                        
+                        var outputList = splitDBList(a.responseText);
+                        placeList(outputList);
+                        
 						document.getElementById("addb").innerHTML = "<br><br>Item to add: <input type=\"text\" name=\"item\" id=\"item\"><br><button type=\"button\" onclick=\"addItem()\">Add</button>";
 						document.getElementById("removeb").innerHTML = "<br><br>Item to remove: <input type=\"text\" name=\"ritem\" id=\"ritem\"><br><button type=\"button\" onclick=\"removeItem()\">Remove</button>";
 					};
@@ -51,38 +56,6 @@
 			};
 			//b.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/login.php?username=" + document.getElementById("u").value + "&pwd_hash=" + document.getElementById("p").value ,true);
 			b.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/login.php?username=" + document.getElementById("u").value + "&pwd_hash=" + hashPass() ,true);
-			b.send();
-		}
-		
-		function addItem(){
-			var b = new XMLHttpRequest();
-			b.onreadystatechange = function() {
-				var a = new XMLHttpRequest();
-				a.onreadystatechange = function() {
-					document.getElementById("output").innerHTML = a.responseText;
-				};
-				//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=<?echo $_POST['username']?>",true);
-				//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=jeremy",true);
-				a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=" + document.getElementById("loginf").innerHTML, true);
-				a.send();
-			};
-			b.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/add_item.php?username=" + document.getElementById("loginf").innerHTML + "&item_desc=" + document.getElementById("item").value ,true);
-			b.send();
-		}
-		
-		function removeItem(){
-			var b = new XMLHttpRequest();
-			b.onreadystatechange = function() {
-				var a = new XMLHttpRequest();
-				a.onreadystatechange = function() {
-					document.getElementById("output").innerHTML = a.responseText;
-				};
-				//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=<?echo $_POST['username']?>",true);
-				//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=jeremy",true);
-				a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=" + document.getElementById("loginf").innerHTML, true);
-				a.send();
-			};
-			b.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/delete_item.php?username=" + document.getElementById("loginf").innerHTML + "&item_desc=" + document.getElementById("ritem").value ,true);
 			b.send();
 		}
 	</script>
