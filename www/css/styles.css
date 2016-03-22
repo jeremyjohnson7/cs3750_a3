@@ -1,9 +1,9 @@
 @font-face {
   font-family: "OldStandardTT";
-  src: url("font/OldStandard-Regular.ttf") format("truetype");
+  src: url("../font/OldStandard-Regular.ttf") format("truetype");
 }
 
 body {
-    font-family: "OldStandardTT";
-    
+    font-family: "OldStandardTT" !important;
+    /*font-size: 125%;*/
 }
