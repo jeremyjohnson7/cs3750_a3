@@ -8,6 +8,8 @@
     include_once "db_info.php";
     $mysqli = new mysqli($db['hostname'], $db['username'], $db['password'], $db['database']);
     
+    $data = array();
+    
     if ($mysqli->connect_error) {
         die('Connect Error (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
     } else {
