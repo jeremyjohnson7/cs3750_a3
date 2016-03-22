@@ -1,4 +1,9 @@
+/*@font-face {
+  font-family: "Old Standard";
+  src: url("res/font/OldStandard-Regular.ttf") format("truetype");
+}*/
+
 body {
-    /*font-family: "Old Standard TT";*/
+    font-family: "Old Standard";
     
 }
