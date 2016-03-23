@@ -35,7 +35,9 @@
 			var b = new XMLHttpRequest();
 			b.onreadystatechange = function() {
                 if (b.responseText != 0){
-					document.getElementById("loginf").innerHTML = "<h1>" + b.responseText + "'s List</h1>";
+					//document.getElementById("loginf").innerHTML = "<h1>" + b.responseText + "'s list</h1>";
+					document.getElementById("loginf").innerHTML = b.responseText;
+					document.getElementById("loginf").setAttribute("class", "itemf");
 					var a = new XMLHttpRequest();
 					a.onreadystatechange = function() {
 						//document.getElementById("output").innerHTML = a.responseText;
@@ -43,8 +45,8 @@
                         var outputList = splitDBList(a.responseText);
                         placeList(outputList);
                         
-						document.getElementById("addb").innerHTML = "<br><br>Item to add: <input type=\"text\" name=\"item\" id=\"item\"><br><button type=\"button\" onclick=\"addItem()\">Add</button>";
-						document.getElementById("removeb").innerHTML = "<br><br>Item to remove: <input type=\"text\" name=\"ritem\" id=\"ritem\"><br><button type=\"button\" onclick=\"removeItem()\">Remove</button>";
+						document.getElementById("addb").innerHTML = "Item to add: <input type=\"text\" name=\"item\" id=\"item\"><br><button type=\"button\" onclick=\"addItem()\">Add</button>";
+						document.getElementById("removeb").innerHTML = "Item to remove: <input type=\"text\" name=\"ritem\" id=\"ritem\"><br><button type=\"button\" onclick=\"removeItem()\">Remove</button>";
 					};
 					//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=<?echo $_POST['username']?>",true);
 					//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=jeremy",true);
