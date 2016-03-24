@@ -120,7 +120,8 @@ function login(){
             a.send();
 
         } else {
-            document.getElementById("output").innerHTML = b.responseText;
+            //document.getElementById("output").innerHTML = b.responseText;
+            document.getElementById("output").innerHTML = "Login Failed";
         }
     };
     b.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/login.php?username=" + document.getElementById("u").value + "&pwd_hash=" + hashPass() ,true);
