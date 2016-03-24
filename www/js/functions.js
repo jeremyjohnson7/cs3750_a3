@@ -76,8 +76,8 @@ function initialDisplay(bResponse)
         var outputList = splitDBList(a.responseText);
         placeList(outputList);
 
-        document.getElementById("addb").innerHTML = "Item to add: <input type=\"text\" name=\"item\" id=\"item\"><br><button type=\"button\" onclick=\"addItem()\">Add</button>";
-        document.getElementById("removeb").innerHTML = "Item to remove: <input type=\"text\" name=\"ritem\" id=\"ritem\"><br><button type=\"button\" onclick=\"removeItem()\">Remove</button>";
+        document.getElementById("addb").innerHTML = "<span>Item to add:</span><br><input type=\"text\" name=\"item\" id=\"item\"><button type=\"button\" onclick=\"addItem()\">Add</button>";
+        document.getElementById("removeb").innerHTML = "<span>Item to remove:</span><br><input type=\"text\" name=\"ritem\" id=\"ritem\"><button type=\"button\" onclick=\"removeItem()\">Remove</button>";
     };
     a.open("GET","http://icarus.cs.weber.edu/~rm08786/l/get_items.php?username=" + bResponse,true);
     a.send();
@@ -113,8 +113,8 @@ function login(){
                 var outputList = splitDBList(a.responseText);
                 placeList(outputList);
 
-                document.getElementById("addb").innerHTML = "Item to add: <input type=\"text\" name=\"item\" id=\"item\"><br><button type=\"button\" onclick=\"addItem()\">Add</button>";
-                document.getElementById("removeb").innerHTML = "Item to remove: <input type=\"text\" name=\"ritem\" id=\"ritem\"><br><button type=\"button\" onclick=\"removeItem()\">Remove</button>";
+                document.getElementById("addb").innerHTML = "<span>Item to add:</span><br><input type=\"text\" name=\"item\" id=\"item\"><button type=\"button\" onclick=\"addItem()\">Add</button>";
+                document.getElementById("removeb").innerHTML = "<span>Item to remove:</span><br><input type=\"text\" name=\"ritem\" id=\"ritem\"><button type=\"button\" onclick=\"removeItem()\">Remove</button>";
             };
             a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=" + b.responseText,true);
             a.send();
