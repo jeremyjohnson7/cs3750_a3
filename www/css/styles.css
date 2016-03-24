@@ -67,16 +67,8 @@ li:empty {
 }
 
 #item, #ritem {
-    /*display: flex;*/
     width: calc(100% - 100px);
-    /*width: 100%;*/
-    /*float: left;*/
-    /*flex: 2;*/
     overflow: hidden;
-}
-
-button[onclick=addItem()], button[onclick=removeItem()] {
-    /*float: right;*/
 }
 
 input+button {
