@@ -22,7 +22,7 @@ body, input, button {
 
 input[type=button], button {
     background: #e0e0e0;
-    min-width: 80px;
+    min-width: 86px;
 }
 
 html {
@@ -62,6 +62,23 @@ li:empty {
     margin-bottom: 15px;
 }
 
-#item, #ritem, button[onclick=addItem()], button[onclick=removeItem()] {
-    float: right;
+#addb, #removeb {
+    width: 100%;
+}
+
+#item, #ritem {
+    /*display: flex;*/
+    width: calc(100% - 100px);
+    /*width: 100%;*/
+    /*float: left;*/
+    /*flex: 2;*/
+    overflow: hidden;
+}
+
+button[onclick=addItem()], button[onclick=removeItem()] {
+    /*float: right;*/
+}
+
+input+button {
+    margin-left: 8px;
 }
