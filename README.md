@@ -1,6 +1,6 @@
 # AssignmentThree
 Assignment Three Repository for CS3750
 
-Test
+[PhoneGap Desktop (Local)](http://localhost:3000/)
 
-[Client-side SHA-256](http://jsfiddle.net/tKUQk/19/19)
+[Adobe PhoneGap Build](https://build.phonegap.com/people/sign_in)
