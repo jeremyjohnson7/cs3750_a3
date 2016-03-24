@@ -7,68 +7,14 @@
 	<title>List Login</title>    
     <script type="text/javascript" src="js/functions.js"></script>
     <script type='text/javascript' src='js/sha256.js'></script>
-	<script type='text/javascript'>
-        function hashPass(){
-            var lowerUser = document.getElementById("u").value;
-            return sha256_digest(lowerUser.toLowerCase() + document.getElementById("p").value);
-        }
-        
-		function addUser(){
-			var b = new XMLHttpRequest();
-			b.onreadystatechange = function() {
-				//document.getElementById("I").innerHTML = "User Created";
-                
-                if (b.responseText == "1")
-                    //document.getElementById("output").innerHTML = b.responseText;
-                    document.getElementById("output").innerHTML = "User Created";
-                else
-                    //document.getElementById("output").innerHTML = b.responseText;
-                    document.getElementById("output").innerHTML = "Operation Failed";
-			};
-			//b.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/add_user.php?username=" + document.getElementById("u").value + "&password=" + document.getElementById("p").value ,true);
-			b.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/add_user.php?username=" + document.getElementById("u").value + "&password=" + hashPass() ,true);
-			b.send();
-		}
-        
-		function login(){
-            //document.getElementById("output").innerHTML = sha256_digest(document.getElementById("u").value + document.getElementById("p").value);
-			var b = new XMLHttpRequest();
-			b.onreadystatechange = function() {
-                if (b.responseText != 0){
-					//document.getElementById("loginf").innerHTML = "<h1>" + b.responseText + "'s list</h1>";
-					document.getElementById("loginf").innerHTML = b.responseText;
-					document.getElementById("loginf").setAttribute("class", "itemf");
-					var a = new XMLHttpRequest();
-					a.onreadystatechange = function() {
-						//document.getElementById("output").innerHTML = a.responseText;
-                        
-                        var outputList = splitDBList(a.responseText);
-                        placeList(outputList);
-                        
-						document.getElementById("addb").innerHTML = "Item to add: <input type=\"text\" name=\"item\" id=\"item\"><br><button type=\"button\" onclick=\"addItem()\">Add</button>";
-						document.getElementById("removeb").innerHTML = "Item to remove: <input type=\"text\" name=\"ritem\" id=\"ritem\"><br><button type=\"button\" onclick=\"removeItem()\">Remove</button>";
-					};
-					//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=<?echo $_POST['username']?>",true);
-					//a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=jeremy",true);
-					a.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/get_items.php?username=" + b.responseText,true);
-					a.send();
-					
-                } else {
-                    document.getElementById("output").innerHTML = b.responseText;
-				}
-			};
-			//b.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/login.php?username=" + document.getElementById("u").value + "&pwd_hash=" + document.getElementById("p").value ,true);
-			b.open("GET","http://icarus.cs.weber.edu/~jj42670/a3/login.php?username=" + document.getElementById("u").value + "&pwd_hash=" + hashPass() ,true);
-			b.send();
-		}
-	</script>
+	
 </head>
 <body>
 <div id="loginf">
 		Username:<br>
 		<input type="text" name="username" id="u"><br>
 		Password:<br>
-		<input type="text" name="password" id="p"><br><br>
+		<input type="password" name="password" id="p"><br><br>
 		<input type="button" value="Submit" onclick="login()"></input>
 		<input type="button" value="Signup" onclick="addUser()"></input>
 </div>
